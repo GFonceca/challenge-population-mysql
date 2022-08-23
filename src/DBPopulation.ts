@@ -1,5 +1,5 @@
 import { createPool, PoolOptions } from "mysql2/promise";
-import { City } from "../database/cities";
+import { cities, City } from "../database/cities";
 
 class DBPopulation {
   private readonly config: PoolOptions;
@@ -26,28 +26,28 @@ class DBPopulation {
   }
 
   async getCities(): Promise<City[] | undefined> {
-    const cities: City[] = await this.queryDB("select * from city");
+    const cities: City[] = await this.queryDB('SELECT * FROM city');
     return cities;
   }
 
   async getCityById(id: number): Promise<City | undefined> {
-    const query = ``;
+    const query = `SELECT * FROM city WHERE id=${id}`;
     const cities: City[] = await this.queryDB(query);
     return cities[0];
   }
 
   async addCity(city: City) {
-    const query = ``;
+    const query = `INSERT INTO city VALUES (${city.id}, "${city.name}", "${city.country}", ${city.population})`;
     await this.queryDB(query);
   }
 
   async deleteCityById(id: number) {
-    const query = ``;
+    const query = `DELETE FROM city WHERE id=${id}`;
     await this.queryDB(query);
   }
 
   async updateNumberOfInhabitantsById(id: number, newPopulation: number) {
-    const query = ``;
+    const query = `UPDATE city SET population=${newPopulation} WHERE id=${id}`;
     await this.queryDB(query);
   }
 }
