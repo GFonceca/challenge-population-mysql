@@ -77,3 +77,4 @@ Se puede usar el archivo `.env` para configurar estas variables de entorno en te
 - [TypeScript](https://www.typescriptlang.org/)
 - [Jest](https://jestjs.io/)
 - [mysql2](https://www.npmjs.com/package/mysql2)
+-
